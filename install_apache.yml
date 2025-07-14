@@ -1,0 +1,20 @@
+---
+
+- hosts: all # we want to run on all the hosts
+  become: true # ansible 
+  tasks:
+  
+  - name: update repo index
+    yum: 
+      update_cache: yes
+
+  - name: Installing the apache2 package
+    yum: 
+      name: httpd #apache2
+      state: latest   #if we replace "latest" with "absent", then the package will be uninstalled
+
+#  - name: Installing PHP Support to Apache
+#    yum: 
+#      name: libapache2-mod-php
+#      state: latest #replace "latest" with "absent to reverse the changes"
+
