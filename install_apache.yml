@@ -21,3 +21,16 @@
       name: php
       state: latest #replace "latest" with "absent to reverse the changes"
     when: ansible_distribution == "RedHat"
+
+  - name: Installing Apache on Ubuntu
+    apt: 
+      name:
+        - apache2
+        - libapache2-mod-php
+      state: latest
+    when: anisble_distribution == "Ubuntu"
+
+  - name: Update repo Index in Ubuntu
+    apt:
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"

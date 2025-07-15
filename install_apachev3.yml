@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install Apache/Httpd pachages
+    package:  #genegic OS Package Manager - magic ingredient, which will select the respective module like apt or dnf depending on the type of OS
+      name:
+        - "{{apache_package}}" #VARIABLE
+        - "{{php_package}}"
+      state: latest
+      update_cache: yes
+
